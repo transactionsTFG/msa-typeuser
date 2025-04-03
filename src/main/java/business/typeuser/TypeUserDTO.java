@@ -6,4 +6,5 @@ import lombok.Data;
 public class TypeUserDTO {
     private long id;
     private String name;
+    private Boolean isActive;
 }

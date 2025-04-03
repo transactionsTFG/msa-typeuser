@@ -27,7 +27,7 @@ public class TypeUserServicesImpl implements TypeUserServices {
     @Override
     public void getTypeUser(long typeUserId) {
         TypeUser typeUser = this.entityManager.find(TypeUser.class, typeUserId, LockModeType.OPTIMISTIC);
-        this.jmsEventDispatcher.publish(EventId.GET_TYPE_USER,  TypeUserMapper.INSTANCE.entityToDTO(typeUser));
+        this.jmsEventDispatcher.publish(EventId.GET_TYPE_USER, TypeUserMapper.INSTANCE.entityToDTO(typeUser));
     }
     
 }

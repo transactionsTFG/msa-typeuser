@@ -21,6 +21,7 @@ public class TypeUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    private Boolean isActive;
     @Version
     private int version;
 }
