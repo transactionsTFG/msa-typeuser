@@ -3,10 +3,8 @@ package business.services;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.LockModeType;
 
 import business.eventdispatcher.IJMSEventDispatcher;
-import business.mapper.TypeUserMapper;
 import business.typeuser.TypeUser;
 import msa.commons.event.EventId;
 import msa.commons.microservices.user.commandevent.CreateUserCommand;
