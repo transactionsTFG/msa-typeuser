@@ -1,4 +1,4 @@
-package business.publisher;
+package business.eventdispatcher;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;

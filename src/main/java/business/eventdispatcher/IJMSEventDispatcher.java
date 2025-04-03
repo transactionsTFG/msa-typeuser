@@ -1,4 +1,4 @@
-package business.publisher;
+package business.eventdispatcher;
 
 import msa.commons.event.EventId;
 

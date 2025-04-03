@@ -3,19 +3,19 @@ package business.command;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import business.command.handler.CommandHandler;
+import business.command.handler.EventHandler;
 import business.command.qualifier.GetTypeQualifier;
 import business.services.TypeUserServices;
 import msa.commons.parser.NumberParser;
 
 @Stateless
 @GetTypeQualifier
-public class GetTypeUserCommand implements CommandHandler {
+public class GetTypeUserEvent implements EventHandler {
 
     private TypeUserServices typeUserServices;
     
     @Override
-    public void handleCommand(Object event) {
+    public void handle(Object event) {
         long idTypeUser = NumberParser.toLong(event);
         this.typeUserServices.getTypeUser(idTypeUser);
     } 

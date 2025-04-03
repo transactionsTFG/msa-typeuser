@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 
+import business.eventdispatcher.IJMSEventDispatcher;
 import business.mapper.TypeUserMapper;
-import business.publisher.IJMSEventDispatcher;
 import business.typeuser.TypeUser;
 import msa.commons.event.EventId;
 
