@@ -9,6 +9,7 @@ import business.eventdispatcher.IJMSEventDispatcher;
 import business.mapper.TypeUserMapper;
 import business.typeuser.TypeUser;
 import msa.commons.event.EventId;
+import msa.commons.microservices.user.commandevent.CreateUserCommand;
 
 @Stateless
 public class TypeUserServicesImpl implements TypeUserServices {
@@ -25,9 +26,13 @@ public class TypeUserServicesImpl implements TypeUserServices {
     }
 
     @Override
-    public void getTypeUser(long typeUserId) {
-        TypeUser typeUser = this.entityManager.find(TypeUser.class, typeUserId, LockModeType.OPTIMISTIC);
-        this.jmsEventDispatcher.publish(EventId.GET_TYPE_USER, TypeUserMapper.INSTANCE.entityToDTO(typeUser));
+    public void getTypeUser(CreateUserCommand c) {
+        TypeUser typeUser = this.entityManager.createNamedQuery("TypeUser.findByName", TypeUser.class)
+                                              .setParameter("name", c.getTypeUser()).getSingleResult();
+        if (typeUser == null) 
+            this.jmsEventDispatcher.publish(EventId.FAILED_USER, c.getIdUser());
+        else
+            this.jmsEventDispatcher.publish(EventId.CREATE_USER, c.getIdUser());
     }
     
 }

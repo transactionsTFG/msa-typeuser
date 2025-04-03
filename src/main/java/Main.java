@@ -2,7 +2,7 @@ import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
-import com.nimbusds.jose.shaded.gson.Gson;
+import com.google.gson.Gson;
 
 import msa.commons.event.Event;
 import msa.commons.event.EventId;

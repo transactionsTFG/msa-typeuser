@@ -1,5 +1,7 @@
 package business.services;
 
+import msa.commons.microservices.user.commandevent.CreateUserCommand;
+
 public interface TypeUserServices {
-    void getTypeUser(long typeUserId);
+    void getTypeUser(CreateUserCommand createUserCommand);
 }

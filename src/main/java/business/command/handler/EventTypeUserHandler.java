@@ -1,5 +1,5 @@
 package business.command.handler;
 
-public interface EventHandler {
+public interface EventTypeUserHandler {
     void handle(Object event);
 }

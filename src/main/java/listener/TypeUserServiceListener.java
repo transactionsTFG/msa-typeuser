@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 
 import com.google.gson.Gson;
 
-import business.command.handler.EventHandler;
+import business.command.handler.EventTypeUserHandler;
 import integration.startup.EventHandlerRegistry;
 import msa.commons.event.Event;
 
@@ -27,7 +27,7 @@ public class TypeUserServiceListener implements MessageListener {
         try {
             if(msg instanceof TextMessage m) {
                 Event event = this.gson.fromJson(m.getText(), Event.class);
-                EventHandler commandHandler = this.eventHandlerRegistry.getCommandHandler(event.getEventId());
+                EventTypeUserHandler commandHandler = this.eventHandlerRegistry.getHandler(event.getEventId());
                 if(commandHandler != null)
                     commandHandler.handle(event.getData());
             }

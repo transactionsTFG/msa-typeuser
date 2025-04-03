@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.Version;
 
 import lombok.AllArgsConstructor;
@@ -16,10 +18,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedQuery(
+    name = "TypeUser.findByName",
+    query = "SELECT t FROM TypeUser t WHERE t.name = :name"
+)
 public class TypeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @JoinColumn(unique = true)
     private String name;
     private Boolean isActive;
     @Version

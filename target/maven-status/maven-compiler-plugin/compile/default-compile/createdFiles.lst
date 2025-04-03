@@ -1,8 +1,9 @@
-business\publisher\IJMSEventDispatcher.class
 business\mapper\TypeUserMapperImpl.class
-integration\startup\CommandHandlerRegistry.class
+business\command\handler\EventTypeUserHandler.class
 business\mapper\TypeUserMapper.class
+business\command\GetTypeUserEvent.class
 integration\producer\GsonProducer.class
+integration\startup\EventHandlerRegistry.class
 integration\producer\EntityManagerProducer.class
 business\services\TypeUserServicesImpl.class
 integration\producer\ResourceProducer.class
@@ -12,6 +13,5 @@ Main.class
 business\services\TypeUserServices.class
 business\typeuser\TypeUser.class
 business\command\qualifier\GetTypeQualifier.class
-business\command\handler\CommandHandler.class
-business\command\GetTypeUserCommand.class
-business\publisher\JMSEventDispatcher.class
+business\eventdispatcher\IJMSEventDispatcher.class
+business\eventdispatcher\JMSEventDispatcher.class
