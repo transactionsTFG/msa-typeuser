@@ -2,6 +2,9 @@ package domainevent.command;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
+
+import com.google.gson.Gson;
 
 import business.services.TypeUserServices;
 import domainevent.command.handler.EventTypeUserHandler;
@@ -14,15 +17,20 @@ import msa.commons.parser.ObjectUtils;
 public class GetTypeUserEvent implements EventTypeUserHandler {
 
     private TypeUserServices typeUserServices;
-    
+    private Gson gson;
+
     @Override
     public void handle(Object event) {
-        if(ObjectUtils.isInstanceOf(event, CreateUserCommand.class))
-            this.typeUserServices.getTypeUser(ObjectUtils.safeCast(event, CreateUserCommand.class));
+        this.typeUserServices.getTypeUser(this.gson.fromJson(event.toString(), CreateUserCommand.class));
     }
 
     @EJB
     public void setTypeUserServices(TypeUserServices typeUserServices) {
         this.typeUserServices = typeUserServices;
+    }
+
+    @Inject
+    public void setGson(Gson gson) {
+        this.gson = gson;
     }
 }
