@@ -15,11 +15,8 @@ import msa.commons.microservices.typeuser.qualifier.GetTypeQualifierV2;
 @Singleton
 @Startup
 public class EventHandlerRegistry {
-    
-    @EJB
-    @GetTypeQualifierV2
-    private EventTypeUserHandler getTypeHandler;
     private Map<EventId, EventTypeUserHandler> handlers = new EnumMap<>(EventId.class);
+    private EventTypeUserHandler getTypeHandler;
 
     @PostConstruct
     public void init(){
@@ -30,4 +27,9 @@ public class EventHandlerRegistry {
         return this.handlers.get(eventId);
     }
 
+    @EJB
+    @GetTypeQualifierV2
+    public void setGetTypeHandler(EventTypeUserHandler getTypeHandler) {
+        this.getTypeHandler = getTypeHandler;
+    }
 }

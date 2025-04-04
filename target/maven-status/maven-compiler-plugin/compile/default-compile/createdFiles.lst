@@ -12,6 +12,5 @@ listener\TypeUserServiceListener.class
 Main.class
 business\services\TypeUserServices.class
 business\typeuser\TypeUser.class
-business\command\qualifier\GetTypeQualifier.class
 business\eventdispatcher\IJMSEventDispatcher.class
 business\eventdispatcher\JMSEventDispatcher.class
