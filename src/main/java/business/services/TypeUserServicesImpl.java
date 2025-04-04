@@ -4,8 +4,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import business.eventdispatcher.IJMSEventDispatcher;
 import business.typeuser.TypeUser;
+import domainevent.publisher.IJMSEventPublisher;
 import msa.commons.event.EventId;
 import msa.commons.microservices.user.commandevent.CreateUserCommand;
 
@@ -13,12 +13,12 @@ import msa.commons.microservices.user.commandevent.CreateUserCommand;
 public class TypeUserServicesImpl implements TypeUserServices {
 
     private EntityManager entityManager;
-    private IJMSEventDispatcher jmsEventDispatcher;
+    private IJMSEventPublisher jmsEventDispatcher;
 
     public TypeUserServicesImpl(){}
 
     @Inject
-    public TypeUserServicesImpl(EntityManager entityManager, IJMSEventDispatcher jmsEventDispatcher) {
+    public TypeUserServicesImpl(EntityManager entityManager, IJMSEventPublisher jmsEventDispatcher) {
         this.entityManager = entityManager;
         this.jmsEventDispatcher = jmsEventDispatcher;
     }

@@ -1,4 +1,4 @@
-package listener;
+package domainevent.consumer;
 
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
