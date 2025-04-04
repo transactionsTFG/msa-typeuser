@@ -16,7 +16,7 @@ import msa.commons.event.Event;
 
 
 @MessageDriven(mappedName = "jms/typeUserServiceQueue")
-public class TypeUserServiceListener implements MessageListener {
+public class DomainEventConsumerTypeUserService implements MessageListener {
     
     private Gson gson;
     private EventHandlerRegistry eventHandlerRegistry;
