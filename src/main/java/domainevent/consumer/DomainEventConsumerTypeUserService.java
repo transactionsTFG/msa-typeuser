@@ -10,8 +10,8 @@ import javax.transaction.Transactional;
 
 import com.google.gson.Gson;
 
-import business.command.handler.EventTypeUserHandler;
-import integration.startup.EventHandlerRegistry;
+import domainevent.command.handler.EventTypeUserHandler;
+import domainevent.registry.EventHandlerRegistry;
 import msa.commons.event.Event;
 
 

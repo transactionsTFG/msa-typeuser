@@ -72,3 +72,5 @@ buildNumber.properties
 .settings
 .target
 .target/*
+target/*
+target

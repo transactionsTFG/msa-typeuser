@@ -1,10 +1,10 @@
-package business.command;
+package domainevent.command;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import business.command.handler.EventTypeUserHandler;
 import business.services.TypeUserServices;
+import domainevent.command.handler.EventTypeUserHandler;
 import msa.commons.microservices.typeuser.qualifier.GetTypeQualifierV2;
 import msa.commons.microservices.user.commandevent.CreateUserCommand;
 import msa.commons.parser.ObjectUtils;
