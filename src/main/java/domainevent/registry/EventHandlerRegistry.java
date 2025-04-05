@@ -16,11 +16,11 @@ import msa.commons.microservices.typeuser.qualifier.GetTypeQualifierV2;
 @Startup
 public class EventHandlerRegistry {
     private Map<EventId, EventTypeUserHandler> handlers = new EnumMap<>(EventId.class);
-    private EventTypeUserHandler getTypeHandler;
+    private EventTypeUserHandler validateTypeHandler;
 
     @PostConstruct
     public void init(){
-        this.handlers.put(EventId.GET_TYPE_USER, getTypeHandler);
+        this.handlers.put(EventId.VALIDATE_TYPE_USER, validateTypeHandler);
     }
 
     public EventTypeUserHandler getHandler(EventId eventId) {
@@ -29,7 +29,7 @@ public class EventHandlerRegistry {
 
     @EJB
     @GetTypeQualifierV2
-    public void setGetTypeHandler(EventTypeUserHandler getTypeHandler) {
-        this.getTypeHandler = getTypeHandler;
+    public void setValidateTypeHandler(EventTypeUserHandler validateTypeHandler) {
+        this.validateTypeHandler = validateTypeHandler;
     }
 }

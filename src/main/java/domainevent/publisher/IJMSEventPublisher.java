@@ -1,7 +1,8 @@
 package domainevent.publisher;
 
 import msa.commons.event.EventId;
+import msa.commons.event.EventResponse;
 
 public interface IJMSEventPublisher {
-    void publish(EventId event, Object data);    
+    void publish(EventId event, EventResponse eventResponse);    
 }
