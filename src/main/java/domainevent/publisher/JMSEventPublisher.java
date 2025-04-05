@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 import com.google.gson.Gson;
 
 import msa.commons.event.EventId;
-import msa.commons.event.EventResponse;
 import msa.commons.consts.JMSQueueNames;
 import msa.commons.consts.PropertiesConsumer;
 import msa.commons.event.Event;
@@ -36,9 +35,9 @@ public class JMSEventPublisher implements IJMSEventPublisher {
     }
 
     @Override
-    public void publish(EventId eventId, EventResponse eventResponse){
+    public void publish(EventId eventId, Object data){
         try(JMSContext jmsContext = connectionFactory.createContext()) {
-            Event sendMsg = new Event(eventId, eventResponse);
+            Event sendMsg = new Event(eventId, data);
             final String msg = this.gson.toJson(sendMsg);
             TextMessage textMessage = jmsContext.createTextMessage(msg);
             textMessage.setStringProperty(PropertiesConsumer.ORIGIN_QUEUE, eventId.toString());
