@@ -19,13 +19,11 @@ import msa.commons.microservices.user.commandevent.CreateUserCommand;
 @GetTypeQualifierV2
 public class GetTypeUserEvent implements EventTypeUserHandler {
 
-    private static final Logger LOGGER = LogManager.getLogger(GetTypeUserEvent.class);
     private TypeUserServices typeUserServices;
     private Gson gson;
 
     @Override
     public void handle(Object event) {
-        LOGGER.info("GetTypeUserEvent.handle() called with event: {}", event);
         this.typeUserServices.getTypeUser(this.gson.fromJson(event.toString(), CreateUserCommand.class));
     }
 
