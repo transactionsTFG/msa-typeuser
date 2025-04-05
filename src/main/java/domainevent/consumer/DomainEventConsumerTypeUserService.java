@@ -33,15 +33,13 @@ public class DomainEventConsumerTypeUserService implements MessageListener {
         try {
             if(msg instanceof TextMessage m) {
                 Event event = this.gson.fromJson(m.getText(), Event.class);
-                LOGGER.info("Cola {}, Evento Id: {}", JMSQueue.NAME_QUEUE_CONSUMER, m.getText());
+                LOGGER.info("Cola {}, Evento Id: {}, Mensaje: {}", JMSQueue.NAME_QUEUE_CONSUMER, event.getEventId(), event.getData());
                 EventTypeUserHandler commandHandler = this.eventHandlerRegistry.getHandler(event.getEventId());
-                if(commandHandler != null){
-                    LOGGER.info("Cola {}, JSON: {}", JMSQueue.NAME_QUEUE_CONSUMER, m.getText());
+                if(commandHandler != null)
                     commandHandler.handle(event.getData());
-                }         
             }
         } catch (Exception e) {
-            System.out.println("Error al recibir el mensaje: " + e.getMessage());
+            LOGGER.error("Error al recibir el mensaje: {}", e.getMessage());
         }
     }
 
