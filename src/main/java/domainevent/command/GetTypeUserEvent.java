@@ -15,10 +15,11 @@ import msa.commons.microservices.user.commandevent.CreateUserCommand;
 public class GetTypeUserEvent extends BaseHandler {
     @Override
     public void handle(Object data) {
-        long idTypeUser = this.typeUserServices.getIdTypeUser(this.gson.fromJson(data.toString(), CreateUserCommand.class));
+        CreateUserCommand command = this.gson.fromJson(data.toString(), CreateUserCommand.class);
+        long idTypeUser = this.typeUserServices.getIdTypeUser(command);
         if (idTypeUser == 0) 
-            this.jmsEventPublisher.publish(EventId.CREATE_USER, idTypeUser);
+            this.jmsEventPublisher.publish(EventId.FAILED_USER, command.getIdUser());
         else
-            this.jmsEventPublisher.publish(EventId.FAILED_USER, idTypeUser);
+            this.jmsEventPublisher.publish(EventId.CREATE_USER, command.getIdUser());
     }    
 }
