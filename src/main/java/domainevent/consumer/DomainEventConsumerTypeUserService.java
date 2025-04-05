@@ -15,11 +15,11 @@ import com.google.gson.Gson;
 
 import domainevent.command.handler.EventTypeUserHandler;
 import domainevent.registry.EventHandlerRegistry;
-import integration.consts.JMSQueueNames;
+import msa.commons.consts.JMSQueueNames;
 import msa.commons.event.Event;
 
 
-@MessageDriven(mappedName = JMSQueueNames.TYPE_USER_SERVICE_QUEUE)
+@MessageDriven(mappedName = JMSQueueNames.AGENCY_TYPE_USER_SERVICE_QUEUE)
 public class DomainEventConsumerTypeUserService implements MessageListener {
     
     private Gson gson;
@@ -32,7 +32,7 @@ public class DomainEventConsumerTypeUserService implements MessageListener {
         try {
             if(msg instanceof TextMessage m) {
                 Event event = this.gson.fromJson(m.getText(), Event.class);
-                LOGGER.info("Recibido en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.TYPE_USER_SERVICE_QUEUE, event.getEventId(), event.getData());
+                LOGGER.info("Recibido en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.AGENCY_TYPE_USER_SERVICE_QUEUE, event.getEventId(), event.getData());
                 EventTypeUserHandler commandHandler = this.eventHandlerRegistry.getHandler(event.getEventId());
                 if(commandHandler != null)
                     commandHandler.handle(event.getData());
