@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 
-import integration.consts.JMSQueue;
+import integration.consts.JMSQueueNames;
 import msa.commons.event.EventId;
 import msa.commons.event.Event;
 
@@ -37,7 +37,7 @@ public class JMSEventPublisher implements IJMSEventPublisher {
         try(JMSContext jmsContext = connectionFactory.createContext()) {
             Event sendMsg = new Event(eventId, data);
             final String msg = this.gson.toJson(sendMsg);
-            LOGGER.info("Publicando en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueue.NAME_QUEUE_ORCHESTATOR, eventId, msg);
+            LOGGER.info("Publicando en Cola {}, Evento Id: {}, Mensaje: {}", JMSQueueNames.ORCHESTATOR_QUEUE, eventId, msg);
             jmsContext.createProducer().send(this.orchestratorQueue, msg);
         }
     }

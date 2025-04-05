@@ -6,7 +6,7 @@ import javax.enterprise.inject.Produces;
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
 
-import integration.consts.JMSQueue;
+import integration.consts.JMSQueueNames;
 
 @ApplicationScoped
 public class ResourceProducer {
@@ -15,6 +15,6 @@ public class ResourceProducer {
     private ConnectionFactory connectionFactory;
 
     @Produces
-    @Resource(lookup = JMSQueue.NAME_QUEUE_ORCHESTATOR)
+    @Resource(lookup = JMSQueueNames.ORCHESTATOR_QUEUE)
     private Queue orchestratorQueue;
 }
