@@ -13,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.Gson;
 
-import domainevent.command.GetTypeUserEvent;
 import domainevent.command.handler.EventTypeUserHandler;
 import domainevent.registry.EventHandlerRegistry;
 import integration.consts.JMSQueueNames;
