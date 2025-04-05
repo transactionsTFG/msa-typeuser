@@ -20,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NamedQuery(
     name = "TypeUser.findByName",
-    query = "SELECT t FROM TypeUser t WHERE t.name = :name"
+    query = "SELECT t FROM TypeUser t WHERE t.name = :name AND t.isActive = true"
 )
 public class TypeUser {
     @Id

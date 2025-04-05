@@ -1,5 +1,7 @@
 package business.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -25,9 +27,9 @@ public class TypeUserServicesImpl implements TypeUserServices {
 
     @Override
     public void getTypeUser(CreateUserCommand c) {
-        TypeUser typeUser = this.entityManager.createNamedQuery("TypeUser.findByName", TypeUser.class)
-                                              .setParameter("name", c.getTypeUser()).getSingleResult();
-        if (typeUser == null) 
+        List<TypeUser> typeUser = this.entityManager.createNamedQuery("TypeUser.findByName", TypeUser.class)
+                                              .setParameter("name", c.getTypeUser()).getResultList();
+        if (typeUser.isEmpty()) 
             this.jmsEventDispatcher.publish(EventId.FAILED_USER, c.getIdUser());
         else
             this.jmsEventDispatcher.publish(EventId.CREATE_USER, c.getIdUser());

@@ -47,7 +47,7 @@
    <dependency>
     <groupId>ucm.tfg</groupId>
     <artifactId>msa-commons</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.4</version>
    </dependency>
   <dependency>
     <groupId>org.mapstruct</groupId>
@@ -59,9 +59,19 @@
     <artifactId>mapstruct-processor</artifactId>
     <version>1.6.3</version>
     <scope>provided</scope>
+  </dependency> 
+   <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.20.0</version>
   </dependency>
-  </dependencies>
+  <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.20.0</version>
+  </dependency>
 
+  </dependencies>
   <build>
     <finalName>msa-typeuser</finalName>
     <plugins>
