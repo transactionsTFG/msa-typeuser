@@ -10,7 +10,7 @@ import javax.ejb.Startup;
 
 import domainevent.command.handler.EventTypeUserHandler;
 import msa.commons.event.EventId;
-import msa.commons.microservices.typeuser.qualifier.GetTypeQualifierV2;
+import business.qualifier.GetTypeQualifierV2;
 
 @Singleton
 @Startup
