@@ -16,6 +16,7 @@ import msa.commons.event.EventId;
 import msa.commons.consts.JMSQueueNames;
 import msa.commons.consts.PropertiesConsumer;
 import msa.commons.event.Event;
+import msa.commons.event.EventData;
 
 @Stateless
 public class JMSEventPublisher implements IJMSEventPublisher {
@@ -37,7 +38,7 @@ public class JMSEventPublisher implements IJMSEventPublisher {
     @Override
     public void publish(EventId eventId, Object data){
         try(JMSContext jmsContext = connectionFactory.createContext()) {
-            Event sendMsg = new Event(eventId, data);
+            Event sendMsg = new Event(eventId, (EventData) data);
             final String msg = this.gson.toJson(sendMsg);
             TextMessage textMessage = jmsContext.createTextMessage(msg);
             textMessage.setStringProperty(PropertiesConsumer.ORIGIN_QUEUE, eventId.toString());
