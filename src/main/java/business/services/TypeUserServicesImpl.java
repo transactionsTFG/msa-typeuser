@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 
 import business.typeuser.TypeUser;
-import msa.commons.microservices.user.commandevent.CreateUserCommand;
+import msa.commons.commands.user.CreateUserCommand;
 
 @Stateless
 public class TypeUserServicesImpl implements TypeUserServices {

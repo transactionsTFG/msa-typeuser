@@ -3,11 +3,11 @@ package domainevent.command;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
+import business.qualifier.GetTypeQualifierV2;
 import domainevent.command.handler.BaseHandler;
 import domainevent.command.handler.EventTypeUserHandler;
+import msa.commons.commands.user.CreateUserCommand;
 import msa.commons.event.EventId;
-import msa.commons.microservices.typeuser.qualifier.GetTypeQualifierV2;
-import msa.commons.microservices.user.commandevent.CreateUserCommand;
 
 @Stateless
 @GetTypeQualifierV2
