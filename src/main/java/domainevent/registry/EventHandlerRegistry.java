@@ -28,8 +28,7 @@ public class EventHandlerRegistry {
     }
 
     @EJB
-    @GetTypeQualifierV2
-    public void setValidateTypeHandler(EventTypeUserHandler validateTypeHandler) {
+    public void setValidateTypeHandler(@GetTypeQualifierV2 EventTypeUserHandler validateTypeHandler) {
         this.validateTypeHandler = validateTypeHandler;
     }
 }
