@@ -24,11 +24,8 @@ public class TypeUserServicesImpl implements TypeUserServices {
 
     @Override
     public long getIdTypeUser(CreateUserCommand c) {
-        List<TypeUser> typeUser = this.entityManager.createNamedQuery("TypeUser.findByName", TypeUser.class)
-                                                .setParameter("name", c.getTypeUser())
-                                                .setLockMode(LockModeType.OPTIMISTIC)
-                                                .getResultList();
-        return typeUser.isEmpty() ? 0 : typeUser.get(0).getId();
+        TypeUser typeUser = this.entityManager.find(TypeUser.class, c.getTypeUser(), LockModeType.OPTIMISTIC);
+        return typeUser == null ? 0 : typeUser.getId();
     }
     
 }
