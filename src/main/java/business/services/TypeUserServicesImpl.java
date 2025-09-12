@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 
 import business.typeuser.TypeUser;
+import business.typeuser.TypeUserDTO;
 import msa.commons.commands.user.CreateUserCommand;
 
 @Stateless
@@ -26,6 +27,12 @@ public class TypeUserServicesImpl implements TypeUserServices {
     public long getIdTypeUser(CreateUserCommand c) {
         TypeUser typeUser = this.entityManager.find(TypeUser.class, c.getTypeUser(), LockModeType.OPTIMISTIC);
         return typeUser == null ? 0 : typeUser.getId();
+    }
+
+    @Override
+    public TypeUserDTO getTypeUserById(Long id) {
+        TypeUser typeUser = this.entityManager.find(TypeUser.class, id, LockModeType.OPTIMISTIC);
+        return typeUser == null ? null : typeUser.toDTO();
     }
     
 }

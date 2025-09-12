@@ -31,4 +31,8 @@ public class TypeUser {
     private Boolean isActive;
     @Version
     private int version;
+
+    public TypeUserDTO toDTO() {
+        return new TypeUserDTO(this.id, this.name, this.isActive);
+    }
 }
